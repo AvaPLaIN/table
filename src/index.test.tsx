@@ -3,8 +3,23 @@ import Index from "./index"; // Pfad anpassen, um auf die Datei mit der Index Ko
 
 describe("Index component", () => {
   test("renders correctly", () => {
-    render(<Index />);
-    const element = screen.getByText("index");
+    render(
+      <Index
+        columns={[
+          { id: "name", label: "Name" },
+          { id: "age", label: "Age" },
+        ]}
+        rows={[
+          {
+            data: {
+              name: "Hans",
+              age: "Peter",
+            },
+          },
+        ]}
+      />
+    );
+    const element = screen.getByText("Name");
     expect(element).toBeInTheDocument();
   });
 });
